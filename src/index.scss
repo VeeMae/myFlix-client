@@ -1,5 +1,13 @@
-$color: steelblue;
+$bg-color: #201e1f;
+$text-color: #fff;
 
-.my-flix {
-  color: $color;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $bg-color;
+  color: $text-color;
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
 }

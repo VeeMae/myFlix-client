@@ -1,0 +1,41 @@
+.movie-view {
+  font-size: 1.5rem;
+  margin: 0 auto;
+  text-align: left;
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.return-button {
+  border-radius: 8px;
+  margin: 3rem auto;
+  font-size: 1.3rem;
+  background-color: #edcdab;
+}
+
+.label {
+  font-weight: 700;
+  color: #fed086;
+}
+
+.detail-view {
+  margin-bottom: 7rem;
+}
+.movie-view_col {
+  padding: 0;
+}
+
+@media all and (max-width: 768px) {
+  .card {
+    margin: 3rem auto;
+    margin-bottom: 2rem;
+  }
+  .movie-view {
+    font-size: 1.3rem;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .detail-view {
+    margin-left: 0;
+  }
+} ;

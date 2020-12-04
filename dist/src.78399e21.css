@@ -1,5 +1,176 @@
-.my-flix {
-  color: steelblue;
+.card {
+  display: inline-block;
+  width: 20rem;
+  margin: 4rem auto;
+  padding: 1rem;
+  background-color: #fff;
+  color: #000;
+  height: auto;
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.card h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+div.card-body {
+  font-size: 1.4rem;
+}
+
+button.card-button.btn.btn-link {
+  color: #000;
+  font-size: 1.3rem;
+  background-color: #edcdab;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.container-header {
+  border-bottom: 1px solid #edcdab;
+  text-align: center;
+}
+
+@media all and (max-width: 768px) {
+  .card {
+    width: 80vw;
+    display: block;
+    margin: 1.5rem auto;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .card h1 {
+    font-size: 1.5rem;
+  }
+
+  div.card-body {
+    font-size: 1.2rem;
+  }
+}
+@media all and (width: 1024px) {
+  .card {
+    margin-left: 5rem;
+  }
+}
+.movie-view {
+  font-size: 1.5rem;
+  margin: 0 auto;
+  text-align: left;
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.return-button {
+  border-radius: 8px;
+  margin: 3rem auto;
+  font-size: 1.3rem;
+  background-color: #edcdab;
+}
+
+.label {
+  font-weight: 700;
+  color: #fed086;
+}
+
+.detail-view {
+  margin-bottom: 7rem;
+}
+
+.movie-view_col {
+  padding: 0;
+}
+
+@media all and (max-width: 768px) {
+  .card {
+    margin: 3rem auto;
+    margin-bottom: 2rem;
+  }
+
+  .movie-view {
+    font-size: 1.3rem;
+  }
+}
+@media all and (min-width: 768px) {
+  .detail-view {
+    margin-left: 0;
+  }
+}
+#login-form {
+  text-align: left;
+  margin: 20rem 0rem;
+}
+
+#login-form h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: #edcdab;
+}
+
+#login-form h3 {
+  margin: 2rem 0 1rem 0;
+  font-size: 1.3rem;
+  color: #edcdab;
+}
+
+input#formBasicPassword.form-control,
+input#formBasicUsername.form-control {
+  width: 50%;
+}
+
+Button {
+  border-radius: 10px;
+  display: block;
+}
+
+.form {
+  padding-left: 70px;
+}
+
+@media all and (max-width: 992px) {
+  #login-form {
+    margin: 10rem auto;
+  }
+
+  #login-form h1 {
+    padding-left: none;
+    font-size: 3rem;
+    margin-bottom: 5rem;
+  }
+
+  .form {
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  input#formBasicPassword.form-control,
+input#formBasicUsername.form-control {
+    width: 65%;
+    margin: 0 auto;
+  }
+
+  #login-form h3 {
+    margin: 2rem auto;
+    font-size: 1.4rem;
+  }
+}
+.main-view {
+  margin: 2rem auto;
+  width: 90%;
+}
+
+.container-header {
+  color: #edcdab;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #201e1f;
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

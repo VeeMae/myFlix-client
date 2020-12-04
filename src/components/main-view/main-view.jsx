@@ -2,6 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { LoginView } from '../login-view/login-view';
+import { RegistrationView } from '../registration-view/registration-view';
+import Container from 'react-bootstrap/Container';
+import { Col, Row } from 'react-bootstrap';
+import './main-view.scss';
 
 //Declares the component by extending the React.Component class to inherit all of its lifecyley methods
 export class MainView extends React.Component {
@@ -13,7 +18,8 @@ export class MainView extends React.Component {
     // Initialize the state to an empty object so we can destructure it later
         this.state = {
             movies: null,
-            selectedMovie: null
+            selectedMovie: null,
+            user: null
     };
 }
 
@@ -38,22 +44,35 @@ export class MainView extends React.Component {
         });
     }
 
+    onLoggedIn(user) {
+        this.setState({
+            user
+        })
+    }
+
   render() {
     // If the state isn't initialized, this will throw on runtime
     // before the data is initially loaded
-    const { movies, selectedMovie } = this.state;
-
+    const { movies, selectedMovie, user } = this.state;
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
     // Before the movies have been loaded
     if (!movies) return <div className="main-view"/>;
 
-    return (
-        <div className="main-view">
-        {selectedMovie
-                ? <MovieView movie={selectedMovie} goBack={() => this.onMovieClick()}/>
-         : movies.map(movie => (
-           <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)}/>
-         ))}
-        </div>
+      return (
+          <Container fluid>
+              <Row>
+                  <Col xs={12}>
+                    <div className="main-view">
+                        <h1 className='container-header'>Browse Movies</h1>
+                            {selectedMovie
+                                ? <MovieView movie={selectedMovie} goBack={() => this.onMovieClick(null)}/>
+                                : movies.map(movie => (
+                                <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+                            ))}
+                    </div>
+                  </Col>
+              </Row>
+        </Container>
     );
   }
 }
