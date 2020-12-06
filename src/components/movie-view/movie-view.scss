@@ -5,6 +5,10 @@
   font-family: "Alegreya Sans", sans-serif;
 }
 
+.movie-row {
+  margin-top: 0;
+}
+
 .return-button {
   border-radius: 8px;
   margin: 3rem auto;
@@ -19,12 +23,13 @@
 
 .detail-view {
   margin-bottom: 7rem;
+  padding: 0;
 }
 .movie-view_col {
   padding: 0;
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 576px) {
   .card {
     margin: 3rem auto;
     margin-bottom: 2rem;
@@ -32,10 +37,13 @@
   .movie-view {
     font-size: 1.3rem;
   }
+  .detail-view {
+    max-width: 50%;
+  }
 }
-
-@media all and (min-width: 768px) {
+@media all and (min-width: 577px) and (max-width: 1024px) {
   .detail-view {
     margin-left: 0;
+    max-width: 50%;
   }
-} ;
+}

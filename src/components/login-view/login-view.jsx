@@ -3,8 +3,10 @@ import { Col, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+
 import './login-view.scss';
+
 
 
 export function LoginView(props) {
@@ -14,6 +16,12 @@ export function LoginView(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username, password);
+        props.onLoggedIn(username);
+    };
+    // Temporary function for now
+    const handleRegister = (e) => {
+        e.preventDefault();
+        console.log(username, password)
         props.onLoggedIn(username);
     };
 
@@ -35,8 +43,9 @@ export function LoginView(props) {
                     </Form.Group>
 
                     <Button variant='success' type='button' onClick={handleSubmit}>Login</Button>
+
                     <h3 className='register-text'>New to myFlix? Click here</h3>
-                    <Button variant='primary' type='button' onClick={handleSubmit}>Register</Button>
+                    <Button variant='primary' type='button' onClick={handleRegister}>Register</Button>
                 </Col>
             </Row>
         </Container>

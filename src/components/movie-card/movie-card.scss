@@ -1,6 +1,5 @@
 .card {
-  display: inline-block;
-  width: 20rem;
+  max-width: 20%;
   margin: 4rem auto;
   padding: 1rem;
   background-color: #fff;
@@ -31,10 +30,9 @@ button.card-button.btn.btn-link {
   text-align: center;
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 576px) {
   .card {
-    width: 80vw;
-    display: block;
+    max-width: 90%;
     margin: 1.5rem auto;
     margin-left: 0;
     padding: 0;
@@ -46,9 +44,8 @@ button.card-button.btn.btn-link {
     font-size: 1.2rem;
   }
 }
-
-@media all and (width: 1024px) {
+@media all and (min-width: 577px) and (max-width: 1024px) {
   .card {
-    margin-left: 5rem;
+    max-width: 30%;
   }
 }

@@ -1,6 +1,5 @@
 .card {
-  display: inline-block;
-  width: 20rem;
+  max-width: 20%;
   margin: 4rem auto;
   padding: 1rem;
   background-color: #fff;
@@ -31,10 +30,9 @@ button.card-button.btn.btn-link {
   text-align: center;
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 576px) {
   .card {
-    width: 80vw;
-    display: block;
+    max-width: 90%;
     margin: 1.5rem auto;
     margin-left: 0;
     padding: 0;
@@ -48,9 +46,9 @@ button.card-button.btn.btn-link {
     font-size: 1.2rem;
   }
 }
-@media all and (width: 1024px) {
+@media all and (min-width: 577px) and (max-width: 1024px) {
   .card {
-    margin-left: 5rem;
+    max-width: 30%;
   }
 }
 .movie-view {
@@ -58,6 +56,10 @@ button.card-button.btn.btn-link {
   margin: 0 auto;
   text-align: left;
   font-family: "Alegreya Sans", sans-serif;
+}
+
+.movie-row {
+  margin-top: 0;
 }
 
 .return-button {
@@ -74,13 +76,14 @@ button.card-button.btn.btn-link {
 
 .detail-view {
   margin-bottom: 7rem;
+  padding: 0;
 }
 
 .movie-view_col {
   padding: 0;
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 576px) {
   .card {
     margin: 3rem auto;
     margin-bottom: 2rem;
@@ -89,15 +92,20 @@ button.card-button.btn.btn-link {
   .movie-view {
     font-size: 1.3rem;
   }
+
+  .detail-view {
+    max-width: 50%;
+  }
 }
-@media all and (min-width: 768px) {
+@media all and (min-width: 577px) and (max-width: 1024px) {
   .detail-view {
     margin-left: 0;
+    max-width: 50%;
   }
 }
 #login-form {
   text-align: left;
-  margin: 20rem 0rem;
+  margin: 15rem 0rem;
 }
 
 #login-form h1 {
@@ -154,9 +162,61 @@ input#formBasicUsername.form-control {
     font-size: 1.4rem;
   }
 }
+.register-row {
+  margin: 15rem 0rem;
+}
+
+.register-button,
+.register-return-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.register-header {
+  text-align: center;
+  color: #edcdab;
+}
+
+.registration-form label {
+  color: #edcdab;
+}
+
+input#formBasicPassword.form-control,
+input#formBasicUsername.form-control,
+input#formBasicEmail.form-control,
+input#formBasicBirthday.form-control {
+  width: 50%;
+}
+
+@media all and (max-width: 992px) {
+  .text-muted {
+    font-size: 0.8rem;
+  }
+
+  .row {
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .register-header {
+    margin-bottom: 2rem;
+  }
+
+  .register-button {
+    margin: 1rem auto;
+  }
+
+  input#formBasicPassword.form-control,
+input#formBasicUsername.form-control,
+input#formBasicEmail.form-control,
+input#formBasicBirthday.form-control {
+    width: 65%;
+    margin: 0 auto;
+  }
+}
 .main-view {
-  margin: 2rem auto;
-  width: 90%;
+  margin: 1.5rem auto;
 }
 
 .container-header {

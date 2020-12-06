@@ -5,7 +5,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import Container from 'react-bootstrap/Container';
-import { Col, Row } from 'react-bootstrap';
+
 import './main-view.scss';
 
 //Declares the component by extending the React.Component class to inherit all of its lifecyley methods
@@ -54,24 +54,26 @@ export class MainView extends React.Component {
     // If the state isn't initialized, this will throw on runtime
     // before the data is initially loaded
     const { movies, selectedMovie, user } = this.state;
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+      if (!user) {
+          return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+      }
+      else if (this.state.username === undefined) {
+          return <RegistrationView/>
+      }
+
     // Before the movies have been loaded
     if (!movies) return <div className="main-view"/>;
 
       return (
-          <Container fluid>
-              <Row>
-                  <Col xs={12}>
-                    <div className="main-view">
-                        <h1 className='container-header'>Browse Movies</h1>
-                            {selectedMovie
-                                ? <MovieView movie={selectedMovie} goBack={() => this.onMovieClick(null)}/>
-                                : movies.map(movie => (
-                                <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
-                            ))}
-                    </div>
-                  </Col>
-              </Row>
+        <Container fluid>
+            <h1 className='container-header'>Browse Movies</h1>
+                <div className="main-view row">
+                    {selectedMovie
+                        ? <MovieView movie={selectedMovie} goBack={() => this.onMovieClick(null)}/>
+                        : movies.map(movie => (
+                        <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+                    ))}
+                </div>
         </Container>
     );
   }

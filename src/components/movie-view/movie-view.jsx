@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
+
 import './movie-view.scss';
 
 export class MovieView extends React.Component {
@@ -19,7 +20,7 @@ export class MovieView extends React.Component {
 
         return (
             <Container className="movie-view">
-                <Row>
+                <Row className='movie-row'>
                     <Col className='movie-view_col'>
 
                         <Card className='detail-view'>
