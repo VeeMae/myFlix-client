@@ -5,8 +5,10 @@ import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar'
 
 import './main-view.scss';
+import { Nav } from 'react-bootstrap';
 
 //Declares the component by extending the React.Component class to inherit all of its lifecyley methods
 export class MainView extends React.Component {
@@ -54,18 +56,35 @@ export class MainView extends React.Component {
     // If the state isn't initialized, this will throw on runtime
     // before the data is initially loaded
     const { movies, selectedMovie, user } = this.state;
-      if (!user) {
-          return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-      }
-      else if (this.state.username === undefined) {
-          return <RegistrationView/>
-      }
+
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>
 
     // Before the movies have been loaded
     if (!movies) return <div className="main-view"/>;
 
       return (
-        <Container fluid>
+          <Container>
+
+            <Container>
+
+                <Navbar variant='dark' expand='lg'>
+
+                      <Navbar.Brand href='#'>myFlix</Navbar.Brand>
+                      <Navbar.Toggle aria-controls='basic-navbar-nav' />
+
+                      <Navbar.Collapse id='basic-navbar-nav'>
+
+                        <Nav>
+                            <Nav.Link href='#'>Profile</Nav.Link>
+                            <Nav.Link href='#'>Logout</Nav.Link>
+                        </Nav>
+
+                      </Navbar.Collapse>
+
+                </Navbar>
+
+            </Container>
+
             <h1 className='container-header'>Browse Movies</h1>
                 <div className="main-view row">
                     {selectedMovie

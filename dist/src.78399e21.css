@@ -1,5 +1,5 @@
 .card {
-  max-width: 20%;
+  max-width: 30%;
   margin: 4rem auto;
   padding: 1rem;
   background-color: #fff;
@@ -19,7 +19,7 @@ div.card-body {
 
 button.card-button.btn.btn-link {
   color: #000;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   background-color: #edcdab;
   border-radius: 8px;
   margin-top: 2rem;
@@ -48,7 +48,11 @@ button.card-button.btn.btn-link {
 }
 @media all and (min-width: 577px) and (max-width: 1024px) {
   .card {
-    max-width: 30%;
+    max-width: 45%;
+  }
+
+  div.card-body {
+    font-size: 1rem;
   }
 }
 .movie-view {
@@ -216,10 +220,20 @@ input#formBasicBirthday.form-control {
   }
 }
 .main-view {
-  margin: 1.5rem auto;
+  margin: 0 auto;
 }
 
 .container-header {
+  color: #edcdab;
+  margin: 2rem auto;
+}
+
+.navbar {
+  margin: 1.5rem auto;
+  padding: 0;
+}
+
+.navbar-dark .navbar-nav a.nav-link {
   color: #edcdab;
 }
 * {

@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import './login-view.scss';
+import { RegistrationView } from '../registration-view/registration-view';
 
 
 
@@ -21,7 +22,7 @@ export function LoginView(props) {
     // Temporary function for now
     const handleRegister = (e) => {
         e.preventDefault();
-        console.log(username, password)
+        console.log(username, password);
         props.onLoggedIn(username);
     };
 
@@ -45,7 +46,7 @@ export function LoginView(props) {
                     <Button variant='success' type='button' onClick={handleSubmit}>Login</Button>
 
                     <h3 className='register-text'>New to myFlix? Click here</h3>
-                    <Button variant='primary' type='button' onClick={handleRegister}>Register</Button>
+                    <Button variant='primary' type='button'>Register</Button>
                 </Col>
             </Row>
         </Container>

@@ -17,7 +17,7 @@ export function RegistrationView(props) {
     //No actual registration functionality for now
     const handleRegister = (e) => {
         e.preventDefault();
-        console.log(username, password, email, birthday)
+        console.log(username, password, email, birthday);
         props.onLoggedIn(username);
 
     };
