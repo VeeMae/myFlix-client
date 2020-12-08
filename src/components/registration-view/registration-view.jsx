@@ -15,11 +15,16 @@ export function RegistrationView(props) {
     const [birthday, setBirthday] = useState('');
 
     //No actual registration functionality for now
-    const handleRegister = (e) => {
-        e.preventDefault();
-        console.log(username, password, email, birthday);
-        props.onLoggedIn(username);
+    // const handleRegister = (e) => {
+    //     e.preventDefault();
+    //     console.log(username, password, email, birthday);
+    //     props.onLoggedIn(username);
 
+    // };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(username, password);
+        props.onLoggedIn(username);
     };
 
     return (
@@ -54,7 +59,7 @@ export function RegistrationView(props) {
                             <Form.Control type='text' placeholder='DD-MM-YYYY' value={birthday} onChange={e => setBirthday(e.target.value)} />
                         </Form.Group>
 
-                        <Button className='register-button' variant='success' type='submit' onClick={handleRegister}>Register</Button>
+                        <Button className='register-button' variant='success' type='submit' onClick={handleSubmit}>Register</Button>
                         <br/>
                          <Button className='register-return-button' variant='secondary' type='submit' onClick={user => this.onLoggedIn(user)}>Cancel</Button>
 
