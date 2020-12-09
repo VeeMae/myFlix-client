@@ -1,0 +1,54 @@
+.card {
+  max-width: 30%;
+  margin: 4rem auto;
+  padding: 1rem;
+  background-color: #fff;
+  color: #000;
+  height: auto;
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.card h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+div.card-body {
+  font-size: 1.4rem;
+}
+
+button.card-button.btn.btn-link {
+  color: #000;
+  font-size: 1.1rem;
+  background-color: #edcdab;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.container-header {
+  border-bottom: 1px solid #edcdab;
+  text-align: center;
+}
+
+@media all and (max-width: 576px) {
+  .card {
+    max-width: 90%;
+    margin: 1.5rem auto;
+    margin-left: 0;
+    padding: 0;
+  }
+  .card h1 {
+    font-size: 1.5rem;
+  }
+  div.card-body {
+    font-size: 1.2rem;
+  }
+}
+@media all and (min-width: 577px) and (max-width: 1024px) {
+  .card {
+    max-width: 45%;
+  }
+  div.card-body {
+    font-size: 1rem;
+  }
+}
