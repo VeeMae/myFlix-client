@@ -29,14 +29,6 @@ export class MovieCard extends React.Component {
                     <Button className='card-button' variant='link'>Details</Button>
                 </Link>
 
-                <Link to={`/movies/director/${movie.Director.Name}`}>
-                     <Button className='card-button' variant="link">Director</Button>
-                </Link>
-
-                <Link to={`/movies/genre/${movie.Genre.Name}`}>
-                    <Button className='card-button' variant="link">Genre</Button>
-                </Link>
-
             </Card>
         );
     }

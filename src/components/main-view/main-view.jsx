@@ -9,6 +9,8 @@ import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
+import { ProfileView } from '../profile-view/profile-view';
+import { UpdateProfile } from '../update-profile/update-profile';
 
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -93,7 +95,7 @@ export class MainView extends React.Component {
                 <Container>
                     <Navbar variant='dark' expand='lg'>
 
-                        <Navbar.Brand href='#'>myFlix</Navbar.Brand>
+                        <Navbar.Brand href='/'>myFlix</Navbar.Brand>
                         <Navbar.Toggle aria-controls='basic-navbar-nav' />
 
                         <Navbar.Collapse id='basic-navbar-nav'>
@@ -123,16 +125,21 @@ export class MainView extends React.Component {
                     <Route path='/movies/genre/:Name' render={({ match }) => {
                         if (!movies) return <div className='main-view' />;
 
-                        return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
+                        return <GenreView genre={movies.find(m => m.Genre.Name === match.params.Name).Genre} />
                     }} />
 
                     <Route path='/movies/director/:Name' render={({ match }) => {
                         if (!movies) return <div className='main-view' />;
 
-                        return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+                        return <DirectorView director={movies.find(m => m.Director.Name === match.params.Name).Director} />
                     }} />
 
+                    <Route path='/users/:username' render={() => <ProfileView movies={movies} />} />
+
+                    <Route path='/users/:username/update' render={() => <UpdateProfile movies={movies} />} />
+
                 </div>
+
               </Router>
 
         </Container>

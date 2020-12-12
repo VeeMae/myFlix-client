@@ -1,11 +1,14 @@
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 import './movie-view.scss';
+
 
 export class MovieView extends React.Component {
     constructor() {
@@ -13,6 +16,21 @@ export class MovieView extends React.Component {
 
         this.state = {};
     }
+
+    addFaveMovie(movie) {
+
+        const token = localStorage.getItem('token');
+        const userName = localStorage.getItem('user');
+
+        axios({
+            method: 'post',
+            url: `https://myflix-movie-application.herokuapp.com/users/${userName}/movies/${movie._id}`,
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(() => {
+            alert('You have added this movie to your list of Favorites.');
+        });
+  }
 
     render() {
         const { movie } = this.props;
@@ -46,10 +64,20 @@ export class MovieView extends React.Component {
                             <span className="value">{movie.Director.Name}</span>
                         </div>
 
+                        <Link to={`/movies/director/${movie.Director.Name}`}>
+                            <Button className='card-button' variant="link">Director</Button>
+                        </Link>
+
+                        <Link to={`/movies/genre/${movie.Genre.Name}`}>
+                            <Button className='card-button' variant="link">Genre</Button>
+                        </Link>
+
 
                         <Link to='/'>
-                            <button className='return-button'>Return</button>
+                            <Button className='return-button'>Return</Button>
                         </Link>
+
+                        <Button onClick={() => this.addFaveMovie(movie)}>Add to Favorite Movies</Button>
 
                     </Col>
                 </Row>
