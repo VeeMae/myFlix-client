@@ -219,6 +219,38 @@ input#formBasicBirthday.form-control {
     margin: 0 auto;
   }
 }
+.director-view {
+  font-size: 1.5rem;
+  margin: 0 auto;
+  text-align: left;
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.director-row {
+  margin-top: 0;
+}
+
+.return-button {
+  border-radius: 8px;
+  margin: 3rem auto;
+  font-size: 1.3rem;
+  background-color: #edcdab;
+}
+
+.label {
+  font-weight: 700;
+  color: #fed086;
+}
+
+.director-view_col {
+  padding: 0;
+}
+
+@media all and (max-width: 576px) {
+  .director-view {
+    font-size: 1.3rem;
+  }
+}
 .main-view {
   margin: 0 auto;
 }

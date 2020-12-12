@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -44,9 +45,11 @@ export class MovieView extends React.Component {
                             <span className="label">Director: </span>
                             <span className="value">{movie.Director.Name}</span>
                         </div>
-                        <div>
-                            <button className='return-button' onClick={this.props.goBack}>Return</button>
-                        </div>
+
+
+                        <Link to='/'>
+                            <button className='return-button'>Return</button>
+                        </Link>
 
                     </Col>
                 </Row>
@@ -66,5 +69,5 @@ MovieView.propTypes = {
         Director: PropTypes.shape({
             Name: PropTypes.string.isRequired
         })
-    }).isRequired
+    })
 };

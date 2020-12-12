@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 import { Col, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import PropTypes from 'prop-types';
@@ -12,14 +15,22 @@ export function LoginView(props) {
     const [password, setPassword] = useState('');
 
     const handleSubmit = (e) => {
+        //Prevents a page refresh
         e.preventDefault();
-        console.log(username, password);
-        props.onLoggedIn(username);
+        //Send a request to the server for authentication
+        axios.post('https://myflix-movie-application.herokuapp.com/login', {
+            username: username,
+            password: password
+        })
+            .then(response => {
+                const data = response.data;
+                props.onLoggedIn(data);
+            })
+            .catch(e => {
+                console.log('no such user')
+            });
     };
 
-     const registerClick = () => {
-         props.onRegister();
-     }
 
     return (
 
@@ -42,7 +53,10 @@ export function LoginView(props) {
                     <Button variant='success' type='button' onClick={handleSubmit}>Login</Button>
 
                     <h3 className='register-text'>New to myFlix? Click here</h3>
-                    <Button variant='primary' type='button' onClick={registerClick}>Register</Button>
+                    <Link to='/register'>
+                        <Button variant='primary' type='button'>Register</Button>
+                    </Link>
+
                 </Col>
             </Row>
         </Container>
@@ -53,5 +67,6 @@ LoginView.propTypes = {
     user: PropTypes.shape({
         username: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired
-    })
+    }),
+    onLoggedIn: PropTypes.func.isRequired
 };

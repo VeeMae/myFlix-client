@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -8,23 +10,30 @@ import Row from 'react-bootstrap/Row';
 
 import './registration-view.scss';
 
+
 export function RegistrationView(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
 
-    //No actual registration functionality for now
-    // const handleRegister = (e) => {
-    //     e.preventDefault();
-    //     console.log(username, password, email, birthday);
-    //     props.onLoggedIn(username);
 
-    // };
-    const handleSubmit = (e) => {
+    const handleRegister = (e) => {
         e.preventDefault();
-        console.log(username, password);
-        props.onLoggedIn(username);
+        axios.post('https://myflix-movie-application.herokuapp.com/users', {
+            username: username,
+            password: password,
+            email: email,
+            birthday: birthday
+        })
+            .then(response => {
+                const data = response.data;
+                console.log(data);
+                window.open('/', '_self');
+            })
+            .catch(e => {
+            console.log('An error has occurred while registering the user. Unable to register at this time.')
+        })
     };
 
     return (
@@ -59,9 +68,12 @@ export function RegistrationView(props) {
                             <Form.Control type='text' placeholder='DD-MM-YYYY' value={birthday} onChange={e => setBirthday(e.target.value)} />
                         </Form.Group>
 
-                        <Button className='register-button' variant='success' type='submit' onClick={handleSubmit}>Register</Button>
-                        <br/>
-                         <Button className='register-return-button' variant='secondary' type='submit' onClick={user => this.onLoggedIn(user)}>Cancel</Button>
+                        <Button className='register-button' variant='success' type='submit' onClick={handleRegister}>Register</Button>
+                        <br />
+                        <Link to='/'>
+                            <Button className='register-return-button' variant='secondary' type='submit'>Cancel</Button>
+                        </Link>
+
 
                     </Form>
                 </Col>
