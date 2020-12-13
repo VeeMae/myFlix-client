@@ -14,9 +14,20 @@ export function LoginView(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const [validated, setValidated] = useState(false);
+
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropogation();
+        }
+
+        setValidated(true);
+
         //Prevents a page refresh
-        e.preventDefault();
+        event.preventDefault();
         //Send a request to the server for authentication
         axios.post('https://myflix-movie-application.herokuapp.com/login', {
             username: username,
@@ -40,22 +51,38 @@ export function LoginView(props) {
                     <h1>Welcome to MyFlix</h1>
                 </Col>
                 <Col sm={12} lg={6} className='form'>
-                    <Form.Group controlId='formBasicUsername'>
-                        <Form.Label>Username: </Form.Label>
-                        <Form.Control type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
-                    </Form.Group>
+                    <Form noValidate validated={validated}>
 
-                    <Form.Group controlId='formBasicPassword'>
-                        <Form.Label>Password: </Form.Label>
-                        <Form.Control type='text' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
-                    </Form.Group>
+                        <Form.Group controlId='formBasicUsername'>
 
-                    <Button variant='success' type='button' onClick={handleSubmit}>Login</Button>
+                            <Form.Label>Username: </Form.Label>
+                            <Form.Control required type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+                            <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Please type your username.
+                            </Form.Control.Feedback>
 
-                    <h3 className='register-text'>New to myFlix? Click here</h3>
-                    <Link to='/register'>
-                        <Button variant='primary' type='button'>Register</Button>
-                    </Link>
+                        </Form.Group>
+
+                        <Form.Group controlId='formBasicPassword'>
+
+                            <Form.Label>Password: </Form.Label>
+                            <Form.Control required type='text' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+                            <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Please type your password.
+                            </Form.Control.Feedback>
+
+                        </Form.Group>
+
+                        <Button className='login-btn' variant='success' type='button' onClick={handleSubmit}>Login</Button>
+
+                        <h3 className='register-text'>New to myFlix? Click here</h3>
+                        <Link to='/register'>
+                            <Button className='register-btn' variant='primary' type='button'>Register</Button>
+                        </Link>
+
+                     </Form>
 
                 </Col>
             </Row>

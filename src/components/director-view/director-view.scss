@@ -6,23 +6,19 @@
 }
 
 .director-row {
-  margin-top: 0;
+  margin: 1rem auto;
 }
 
-.return-button {
-  border-radius: 8px;
-  margin: 3rem auto;
-  font-size: 1.3rem;
-  background-color: #edcdab;
+.director-card {
+  margin: 1rem 0;
+  color: #000;
+}
+.director-btn {
+  margin: 0 auto;
 }
 
 .label {
-  font-weight: 700;
-  color: #fed086;
-}
-
-.director-view_col {
-  padding: 0;
+  color: #a07e77;
 }
 
 @media all and (max-width: 576px) {

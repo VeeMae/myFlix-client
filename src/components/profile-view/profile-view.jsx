@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
@@ -72,10 +73,11 @@ export class ProfileView extends React.Component {
         const token = localStorage.getItem('token');
         const userName = localStorage.getItem('user');
 
-        axios.delete(`https://myflix-movie-application.herokuapp.com/users/${userName}/movies/${movie._id}`, {
+        axios.delete(`https://myflix-movie-application.herokuapp.com/users/${userName}/movies/delete/${movie._id}`, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(() => {
+                alert('The movie has been removed from your Favorites.')
                 this.componentDidMount();
             });
     }
@@ -90,45 +92,49 @@ export class ProfileView extends React.Component {
 
         <Container className="profile-view">
             <Row className='profile-row'>
-                <Col className='profile-view_col'>
 
-                    <div className="user-name">
-                        <span className="label">Username: </span>
-                        <span className="value">{this.state.username}</span>
+                    <h2>User Information</h2>
+
+                    <Card className='profileCard'>
+
+                        <Card.Body className='profile-card'>
+
+                            <Card.Text>
+                                <span className="label">Username: </span>
+                                    {this.state.username}
+                                    <br/>
+                                <span className="label">Email: </span>
+                                    {this.state.email}
+                                    <br />
+                                <span className='label'>Birthday: </span>
+                                    {this.state.birthday}
+                            </Card.Text>
+
+                        </Card.Body>
+
+                    </Card>
+
+                    <div>
+                        <Link to='/users/:username/update'>
+                            <Button variant='success' className='update-button'>Update Profile</Button>
+                        </Link>
+
+                        <Button variant='danger' onClick={() => this.deregisterUser()} className='delete-user-button'>Delete Profile</Button>
+
+                        <Link to='/'>
+                            <Button variant='light' className='home-button'>Home</Button>
+                        </Link>
                     </div>
+            </Row>
 
-                    <div className="user-email">
-                        <span className="label">Email: </span>
-                        <span className="value">{this.state.email}</span>
-                    </div>
-
-                    <div className="user-birthday">
-                        <span className="label">Birthday: </span>
-                        <span className="value">{this.state.birthday}</span>
-                    </div>
-
-                    <Link to='/users/:username/update'>
-                        <Button className='update-button'>Update Profile</Button>
-                    </Link>
-
-                    <Button onClick={() => this.deregisterUser()} className='deleteUser-button'>Delete Profile</Button>
-
-
-                    <Link to='/'>
-                        <Button className='return-button'>Home</Button>
-                    </Link>
-
-                </Col>
-                </Row>
-
-                <div className='fave-movies_col row'>
+            <Row className='fave-movies'>
 
                     <h2>Favorite Movies</h2>
 
                     {FaveMovies.map(movie => {
                         return (
 
-                        <Card key={movie._id} border='dark' className='fave-movies'>
+                        <Card key={movie._id} border='dark' className='fave-movies_card'>
 
                             <Card.Img variant='top' src={movie.ImagePath} />
                             <Card.Header>
@@ -138,18 +144,17 @@ export class ProfileView extends React.Component {
                             </Card.Header>
 
                             <Link to={`/movies/${movie._id}`}>
-                                <Button className='card-button' variant='link'>Details</Button>
+                                <Button variant='info' className='card-button profile-details-btn'>Details</Button>
                             </Link>
 
-                            <Button onClick={() => this.deleteFaveMovie(movie)}>Remove Movie</Button>
+                            <Button variant='secondary' onClick={() => this.deleteFaveMovie(movie)}>Remove Movie</Button>
 
                         </Card>
 
                         )
                     })}
 
-                </div>
-
+            </Row>
 
         </Container>
     );

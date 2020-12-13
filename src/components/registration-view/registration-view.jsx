@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -17,9 +18,21 @@ export function RegistrationView(props) {
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
 
+    const [validated, setValidated] = useState(false);
 
-    const handleRegister = (e) => {
-        e.preventDefault();
+    const handleRegister = (event) => {
+
+        const form = event.currentTarget;
+
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropogation();
+        }
+
+        setValidated(true);
+
+
+        event.preventDefault();
         axios.post('https://myflix-movie-application.herokuapp.com/users', {
             username: username,
             password: password,
@@ -44,28 +57,44 @@ export function RegistrationView(props) {
                 </Col>
 
                 <Col lg={6}>
-                    <Form className='registration-form'>
+                    <Form className='registration-form' noValidate validated={validated}>
 
                         <Form.Group controlId='formBasicUsername'>
                             <Form.Label>Create a Username: </Form.Label>
-                            <Form.Control type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+                            <Form.Control required type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+                            <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Please choose a username.
+                            </Form.Control.Feedback>
                             <Form.Text className='text-muted'>Must be alphanumeric and be at least 7 characters</Form.Text>
                         </Form.Group>
 
                         <Form.Group controlId='formBasicPassword'>
                             <Form.Label>Create a Password: </Form.Label>
-                            <Form.Control type='text' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+                            <Form.Control required type='text' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+                            <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Please choose a password.
+                            </Form.Control.Feedback>
                             <Form.Text className='text-muted'>Must be alphanumeric and between 7-15 characters</Form.Text>
                         </Form.Group>
 
                         <Form.Group controlId='formBasicEmail'>
                             <Form.Label>Enter Email: </Form.Label>
-                            <Form.Control type='email' placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
+                            <Form.Control required type='email' placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
+                            <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Please type your email.
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId='formBasicBirthday'>
                             <Form.Label>Enter Birthday: </Form.Label>
-                            <Form.Control type='text' placeholder='DD-MM-YYYY' value={birthday} onChange={e => setBirthday(e.target.value)} />
+                            <Form.Control required type='text' placeholder='DD-MM-YYYY' value={birthday} onChange={e => setBirthday(e.target.value)} />
+                            <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Please type your birthday according to the format.
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Button className='register-button' variant='success' type='submit' onClick={handleRegister}>Register</Button>
@@ -88,5 +117,5 @@ RegistrationView.propTypes = {
         password: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
         birthday: PropTypes.instanceOf(Date).isRequired
-    })
+    }).isRequired
 };

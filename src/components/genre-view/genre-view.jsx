@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
-import { Col, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
 
 import './genre-view.scss';
 
@@ -22,21 +24,29 @@ export class GenreView extends React.Component {
         return (
 
             <Container className="genre-view">
+                <h2>Genre Info</h2>
                 <Row className='genre-row'>
-                    <Col className='genre-view_col'>
 
-                        <div className="genre-name">
-                            <span className="value">{genre.Name}</span>
-                        </div>
-                        <div className="genre-description">
-                            <span className="value">{genre.Description}</span>
-                        </div>
+                    <Card className='genreCard'>
 
-                        <Link to='/'>
-                            <button className='return-button'>Return</button>
-                        </Link>
+                        <Card.Body>
+                            <Card.Text>
+                                <span className="label">Genre: </span>
+                                {genre.Name}
+                                <br />
+                                <span className="label">Description: </span>
+                                {genre.Description}
+                            </Card.Text>
+                        </Card.Body>
 
-                    </Col>
+                    </Card>
+                </Row>
+
+                <Row className='genre-btn'>
+                    <Link to='/'>
+                        <Button variant='light' className='genre-home-button'>Home</Button>
+                    </Link>
+
                 </Row>
             </Container>
         );

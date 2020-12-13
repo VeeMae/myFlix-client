@@ -6,44 +6,61 @@
 }
 
 .movie-row {
-  margin-top: 0;
+  margin-top: 2rem;
 }
 
-.return-button {
-  border-radius: 8px;
-  margin: 3rem auto;
-  font-size: 1.3rem;
-  background-color: #edcdab;
-}
-
-.label {
-  font-weight: 700;
-  color: #fed086;
-}
-
-.detail-view {
+.detailCard {
+  margin: 0 auto;
   margin-bottom: 7rem;
   padding: 0;
+  text-align: left;
+  width: 50%;
+  color: #000;
 }
-.movie-view_col {
-  padding: 0;
+
+.btn.director-btn,
+.btn.genre-btn,
+.btn.add-btn,
+.btn.movie-view-home-btn {
+  display: block;
+  width: 50%;
+  margin: 2rem;
+}
+
+.btns {
+  margin-top: 2rem;
 }
 
 @media all and (max-width: 576px) {
-  .card {
-    margin: 3rem auto;
-    margin-bottom: 2rem;
+  .detailCard {
+    margin: 1rem 1rem;
+    margin-bottom: 1.5rem;
+    width: 90%;
+    padding: 0;
   }
   .movie-view {
     font-size: 1.3rem;
   }
-  .detail-view {
-    max-width: 50%;
+  .btn.director-btn,
+  .btn.genre-btn,
+  .btn.add-btn,
+  .btn.movie-view-home-btn {
+    display: block;
+    width: 90%;
+    margin: 1.5rem auto;
   }
 }
 @media all and (min-width: 577px) and (max-width: 1024px) {
-  .detail-view {
-    margin-left: 0;
+  .detail-view.card {
     max-width: 50%;
+    margin: 0 auto;
+  }
+  .btn.director-btn,
+  .btn.genre-btn,
+  .btn.add-btn,
+  .btn.movie-view-home-btn {
+    display: block;
+    width: 60%;
+    margin: 1rem auto;
   }
 }

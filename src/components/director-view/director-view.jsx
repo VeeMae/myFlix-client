@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+
 
 import './director-view.scss';
 
@@ -21,29 +25,34 @@ export class DirectorView extends React.Component {
         return (
 
             <Container className="director-view">
+                <h2>Director Info</h2>
                 <Row className='director-row'>
-                    <Col className='director-view_col'>
 
-                        <div className="director-name">
-                            <span className="label">Name: </span>
-                            <span className="value">{director.Name}</span>
-                        </div>
-                        <div className="director-birth">
-                            <span className="label">Born: </span>
-                            <span className="value">{director.Birth}</span>
-                        </div>
-                        <div className="director-bio">
-                            <span className="label">Bio: </span>
-                            <span className="value">{director.Bio}</span>
-                        </div>
+                    <Card className='director-card'>
 
+                        <Card.Body>
+                            <Card.Text>
+                                <span className="label">Name: </span>
+                                {director.Name}
+                                <br />
+                                <span className="label">Born: </span>
+                                {director.Birth}
+                                <br/>
+                                <span className="label">Bio: </span>
+                                {director.Bio}
+                            </Card.Text>
+                        </Card.Body>
 
-                        <Link to='/'>
-                            <button className='return-button'>Return</button>
-                        </Link>
-
-                    </Col>
+                    </Card>
                 </Row>
+
+                <Row className='director-btn'>
+                     <Link to='/'>
+                        <Button variant='light' className='director-home-btn'>Home</Button>
+                    </Link>
+                </Row>
+
+
             </Container>
         );
 
