@@ -29,20 +29,24 @@
   margin-top: 3rem;
 }
 
-.fave-movies {
-  margin: 0 auto;
+.faveMovies {
+  margin: 2rem auto;
 }
 
-.fave-movies_card {
-  width: 16rem;
-  margin: 5rem 0;
+div.faveMovies-container {
+  margin-top: 4rem;
+}
+
+.faveMovies_card {
+  width: 14rem;
+  margin: 1rem;
 }
 
 @media all and (max-width: 576px) {
   .update-button,
   .delete-user-button,
   .home-button {
-    width: 60%;
+    width: 50%;
     display: block;
     margin: 1rem auto;
   }
@@ -51,24 +55,26 @@
     width: 16rem;
   }
   .profile-view,
-  .fave-movies {
+  .faveMovies {
     text-align: center;
   }
 
-  .fave-movies.row {
+  .faveMovies {
     display: block;
     margin: 0 auto;
   }
 
-  .fave-movies_card {
+  div.faveMovies-container {
+    margin: 1rem auto;
+    display: block;
+  }
+
+  .faveMovies_card {
     margin: 2rem auto;
+    width: 16rem;
   }
 }
 @media all and (min-width: 577px) and (max-width: 1024px) {
-  .detail-view.card {
-    max-width: 50%;
-    margin: 0 auto;
-  }
   .btn.director-btn,
   .btn.genre-btn,
   .btn.add-btn,
@@ -76,5 +82,14 @@
     display: block;
     width: 60%;
     margin: 1rem auto;
+  }
+
+  div.faveMovies-container {
+    margin-top: 2rem;
+  }
+
+  .faveMovies_card {
+    margin: 1rem;
+    width: 13rem;
   }
 }

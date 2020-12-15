@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import { format } from 'path';
+import Container from 'react-bootstrap/Container';
+import { Row } from 'react-bootstrap';
+
 
 import './update-profile.scss';
 
@@ -55,11 +57,11 @@ export function UpdateProfile(props) {
 
     return (
 
-        <div className='update-profile'>
+        <Container className='updateProfile-view'>
 
             <h2>Update Profile</h2>
 
-            <Form noValidate validated={validated}>
+            <Form noValidate validated={validated} className='update-form'>
 
                 <Form.Group controlId='formBasicUsername'>
 
@@ -107,13 +109,12 @@ export function UpdateProfile(props) {
 
             </Form>
 
-            <Button type='submit' onClick={handleUpdate}>Update</Button>
+            <Button variant='success' className='update-btn' type='submit' onClick={handleUpdate}>Update</Button>
             <Link to='/users/username'>
-                <Button>Cancel</Button>
+                <Button variant='danger' className='updateHome-btn'>Cancel</Button>
             </Link>
 
-
-        </div>
+        </Container>
 
     )
 }

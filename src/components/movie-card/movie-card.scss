@@ -8,9 +8,10 @@
   font-family: "Alegreya Sans", sans-serif;
 }
 
-.card h1 {
+h1.card-title {
   font-size: 1.6rem;
   font-weight: 700;
+  color: #000;
 }
 
 div.card-body {
@@ -33,7 +34,7 @@ div.card-body {
     margin: 1.5rem auto;
     padding: 0;
   }
-  .card h1 {
+  h1.card-title {
     font-size: 1.5rem;
   }
   div.card-body {

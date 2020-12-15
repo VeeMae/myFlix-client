@@ -8,9 +8,10 @@
   font-family: "Alegreya Sans", sans-serif;
 }
 
-.card h1 {
+h1.card-title {
   font-size: 1.6rem;
   font-weight: 700;
+  color: #000;
 }
 
 div.card-body {
@@ -34,7 +35,7 @@ div.card-body {
     padding: 0;
   }
 
-  .card h1 {
+  h1.card-title {
     font-size: 1.5rem;
   }
 
@@ -328,20 +329,24 @@ input#formBasicBirthday.form-control {
   margin-top: 3rem;
 }
 
-.fave-movies {
-  margin: 0 auto;
+.faveMovies {
+  margin: 2rem auto;
 }
 
-.fave-movies_card {
-  width: 16rem;
-  margin: 5rem 0;
+div.faveMovies-container {
+  margin-top: 4rem;
+}
+
+.faveMovies_card {
+  width: 14rem;
+  margin: 1rem;
 }
 
 @media all and (max-width: 576px) {
   .update-button,
 .delete-user-button,
 .home-button {
-    width: 60%;
+    width: 50%;
     display: block;
     margin: 1rem auto;
   }
@@ -352,31 +357,92 @@ input#formBasicBirthday.form-control {
   }
 
   .profile-view,
-.fave-movies {
+.faveMovies {
     text-align: center;
   }
 
-  .fave-movies.row {
+  .faveMovies {
     display: block;
     margin: 0 auto;
   }
 
-  .fave-movies_card {
+  div.faveMovies-container {
+    margin: 1rem auto;
+    display: block;
+  }
+
+  .faveMovies_card {
     margin: 2rem auto;
+    width: 16rem;
   }
 }
 @media all and (min-width: 577px) and (max-width: 1024px) {
-  .detail-view.card {
-    max-width: 50%;
-    margin: 0 auto;
-  }
-
   .btn.director-btn,
 .btn.genre-btn,
 .btn.add-btn,
 .btn.movie-view-home-btn {
     display: block;
     width: 60%;
+    margin: 1rem auto;
+  }
+
+  div.faveMovies-container {
+    margin-top: 2rem;
+  }
+
+  .faveMovies_card {
+    margin: 1rem;
+    width: 13rem;
+  }
+}
+.updateProfile-view {
+  margin: 0 auto;
+}
+
+.update-form {
+  margin: 3rem auto;
+}
+
+.update-btn,
+.updateHome-btn {
+  display: block;
+  width: 30%;
+  margin: 1rem 0;
+}
+
+@media all and (max-width: 576px) {
+  .updateProfile-view h2 {
+    text-align: center;
+    margin: 1rem auto;
+    margin-bottom: 2rem;
+  }
+
+  .update-form {
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .update-btn,
+.updateHome-btn {
+    width: 50%;
+    margin: 1rem auto;
+  }
+}
+@media all and (min-width: 577px) and (max-width: 1024px) {
+  .updateProfile-view h2 {
+    text-align: center;
+    margin: 1rem auto;
+    margin-bottom: 2rem;
+  }
+
+  .update-form {
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .update-btn,
+.updateHome-btn {
+    width: 20%;
     margin: 1rem auto;
   }
 }

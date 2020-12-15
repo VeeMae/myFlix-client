@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
-import { Col, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 
@@ -20,7 +20,7 @@ export class DirectorView extends React.Component {
 
     render() {
 
-        const { director } = this.props;
+        const { director, movie } = this.props;
 
         return (
 

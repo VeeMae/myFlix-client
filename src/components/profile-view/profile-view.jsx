@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
-import { Col, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 
@@ -127,14 +127,15 @@ export class ProfileView extends React.Component {
                     </div>
             </Row>
 
-            <Row className='fave-movies'>
+            <Row className='faveMovies'>
 
                     <h2>Favorite Movies</h2>
 
+                    <div className='faveMovies-container row'>
                     {FaveMovies.map(movie => {
                         return (
 
-                        <Card key={movie._id} border='dark' className='fave-movies_card'>
+                        <Card key={movie._id} border='dark' className='faveMovies_card'>
 
                             <Card.Img variant='top' src={movie.ImagePath} />
                             <Card.Header>
@@ -153,7 +154,7 @@ export class ProfileView extends React.Component {
 
                         )
                     })}
-
+                </div>
             </Row>
 
         </Container>
