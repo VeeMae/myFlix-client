@@ -53623,7 +53623,7 @@ function LoginView(props) {
 
     if (form.checkValidity() === false) {
       event.preventDefault();
-      event.stopPropogation();
+      event.stopPropagation();
     }
 
     setValidated(true); //Prevents a page refresh
@@ -53786,9 +53786,10 @@ function RegistrationView(props) {
 
     if (form.checkValidity() === false) {
       event.preventDefault();
-      event.stopPropogation();
+      event.stopPropagation();
     }
 
+    ;
     setValidated(true);
     event.preventDefault();
 
@@ -53800,6 +53801,7 @@ function RegistrationView(props) {
     }).then(function (response) {
       var data = response.data;
       console.log(data);
+      alert('You may now login.');
       window.open('/', '_self');
     }).catch(function (e) {
       console.log(e, 'An error has occurred while registering the user. Unable to register at this time.');
@@ -53895,7 +53897,7 @@ RegistrationView.propTypes = {
     password: _propTypes.default.string.isRequired,
     email: _propTypes.default.string.isRequired,
     birthday: _propTypes.default.instanceOf(Date).isRequired
-  })
+  }).isRequired
 };
 },{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -54414,7 +54416,7 @@ function UpdateProfile(props) {
 
     if (form.checkValidity() === false) {
       event.preventDefault();
-      event.stopPropogation();
+      event.stopPropagation();
     }
 
     setValidated(true);
@@ -54516,10 +54518,10 @@ function UpdateProfile(props) {
 
 UpdateProfile.propTypes = {
   user: _propTypes.default.shape({
-    username: _propTypes.default.string.isRequired,
-    password: _propTypes.default.string.isRequired,
-    email: _propTypes.default.string.isRequired,
-    birthday: _propTypes.default.instanceOf(Date).isRequired
+    username: _propTypes.default.string,
+    password: _propTypes.default.string,
+    email: _propTypes.default.string,
+    birthday: _propTypes.default.instanceOf(Date)
   })
 };
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","./update-profile.scss":"components/update-profile/update-profile.scss"}],"components/main-view/main-view.scss":[function(require,module,exports) {
@@ -54942,7 +54944,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51858" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53397" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

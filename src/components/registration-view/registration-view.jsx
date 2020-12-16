@@ -21,17 +21,17 @@ export function RegistrationView(props) {
     const [validated, setValidated] = useState(false);
 
     const handleRegister = (event) => {
-
         const form = event.currentTarget;
 
         if (form.checkValidity() === false) {
             event.preventDefault();
-            event.stopPropogation();
-        }
+            event.stopPropagation();
+        };
 
         setValidated(true);
 
         event.preventDefault();
+
         axios.post('https://myflix-movie-application.herokuapp.com/users', {
             username: username,
             password: password,
@@ -41,12 +41,13 @@ export function RegistrationView(props) {
             .then(response => {
                 const data = response.data;
                 console.log(data);
+                alert('You may now login.');
                 window.open('/', '_self');
             })
             .catch(e => {
                 console.log(e, 'An error has occurred while registering the user. Unable to register at this time.')
                 alert('An error has occurred while registering the user. Unable to register at this time.')
-        })
+            });
     };
 
     return (
@@ -117,5 +118,5 @@ RegistrationView.propTypes = {
         password: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
         birthday: PropTypes.instanceOf(Date).isRequired
-    })
+    }).isRequired
 };

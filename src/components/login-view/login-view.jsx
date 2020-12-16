@@ -21,7 +21,7 @@ export function LoginView(props) {
 
         if (form.checkValidity() === false) {
             event.preventDefault();
-            event.stopPropogation();
+            event.stopPropagation();
         }
 
         setValidated(true);

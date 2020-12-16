@@ -117,7 +117,7 @@ div.card-body {
 .btn.add-btn,
 .btn.movie-view-home-btn {
     display: block;
-    width: 60%;
+    width: 65%;
     margin: 1rem auto;
   }
 }
@@ -239,7 +239,7 @@ input#formBasicBirthday.form-control {
 input#formBasicUsername.form-control,
 input#formBasicEmail.form-control,
 input#formBasicBirthday.form-control {
-    width: 70%;
+    width: 75%;
     margin: 0 auto;
   }
 }
@@ -323,7 +323,7 @@ input#formBasicBirthday.form-control {
 .update-button,
 .delete-user-button,
 .home-button {
-  width: 20%;
+  width: 25%;
   display: inline-block;
   margin: 0 1rem 1rem 0;
   margin-top: 3rem;
@@ -387,7 +387,7 @@ div.faveMovies-container {
   }
 
   div.faveMovies-container {
-    margin-top: 3rem;
+    margin-top: 3rem auto;
   }
 
   .faveMovies_card {
@@ -444,6 +444,14 @@ div.faveMovies-container {
 .updateHome-btn {
     width: 20%;
     margin: 1rem auto;
+  }
+
+  .updateProfile-view input#formBasicPassword.form-control,
+.updateProfile-view input#formBasicUsername.form-control,
+.updateProfile-view input#formBasicEmail.form-control,
+.updateProfile-view input#formBasicBirthday.form-control {
+    width: 50%;
+    margin: 0 auto;
   }
 }
 .main-view {

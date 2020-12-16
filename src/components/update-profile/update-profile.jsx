@@ -23,7 +23,7 @@ export function UpdateProfile(props) {
 
         if (form.checkValidity() === false) {
             event.preventDefault();
-            event.stopPropogation();
+            event.stopPropagation();
         }
 
         setValidated(true);
@@ -118,9 +118,9 @@ export function UpdateProfile(props) {
 
 UpdateProfile.propTypes = {
     user: PropTypes.shape({
-        username: PropTypes.string.isRequired,
-        password: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        birthday: PropTypes.instanceOf(Date).isRequired
+        username: PropTypes.string,
+        password: PropTypes.string,
+        email: PropTypes.string,
+        birthday: PropTypes.instanceOf(Date)
     })
 }
