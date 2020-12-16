@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { Col, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -28,7 +28,7 @@ export function LoginView(props) {
 
         //Prevents a page refresh
         event.preventDefault();
-        //Send a request to the server for authentication
+            //Send a request to the server for authentication
         axios.post('https://myflix-movie-application.herokuapp.com/login', {
             username: username,
             password: password
@@ -38,9 +38,10 @@ export function LoginView(props) {
                 props.onLoggedIn(data);
             })
             .catch(e => {
-                console.log('no such user')
+                console.log(e, 'The user does not exist or incorrect credentials.');
+                alert('Please try again. Check that you have entered your credentials correctly.')
             });
-    };
+};
 
 
     return (
@@ -56,7 +57,7 @@ export function LoginView(props) {
                         <Form.Group controlId='formBasicUsername'>
 
                             <Form.Label>Username: </Form.Label>
-                            <Form.Control required type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+                            <Form.Control required minLength='5' type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
                             <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Please type your username.
@@ -67,7 +68,7 @@ export function LoginView(props) {
                         <Form.Group controlId='formBasicPassword'>
 
                             <Form.Label>Password: </Form.Label>
-                            <Form.Control required type='text' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+                            <Form.Control required minLength='5' type='password' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
                             <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Please type your password.

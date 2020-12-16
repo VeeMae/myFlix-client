@@ -6,11 +6,8 @@ import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-import { Row } from 'react-bootstrap';
-
 
 import './update-profile.scss';
-
 
 export function UpdateProfile(props) {
     const [username, updateUsername] = useState('');
@@ -54,7 +51,6 @@ export function UpdateProfile(props) {
             });
     }
 
-
     return (
 
         <Container className='updateProfile-view'>
@@ -66,10 +62,11 @@ export function UpdateProfile(props) {
                 <Form.Group controlId='formBasicUsername'>
 
                     <Form.Label>Change Username:</Form.Label>
-                    <Form.Control required type='text' value={username} placeholder='Change username' onChange={e => updateUsername(e.target.value)} />
+                    <Form.Control required minLength='5' type='text' value={username} placeholder='Change username' onChange={e => updateUsername(e.target.value)} />
+                    <Form.Text className='text-muted'>Must be alphanumeric and at least 5 characters</Form.Text>
                     <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">
-                        Please choose a username.
+                        Please choose a username. Must be alphanumeric and at least 5 characters.
                     </Form.Control.Feedback>
 
                 </Form.Group>
@@ -77,21 +74,22 @@ export function UpdateProfile(props) {
                 <Form.Group controlId='formBasicPassword'>
 
                     <Form.Label>Change Password:</Form.Label>
-                    <Form.Control required type='text' value={password} placeholder='Change password' onChange={e => updatePassword(e.target.value)} />
+                    <Form.Control required minLength='5' type='password' value={password} placeholder='Change password' onChange={e => updatePassword(e.target.value)} />
                     <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">
-                        Please choose a password.
+                        Please choose a password. Must be alphanumeric and at least 5 characters.
                     </Form.Control.Feedback>
+                    <Form.Text className='text-muted'>Must be alphanumeric and at least 5 characters</Form.Text>
 
                 </Form.Group>
 
                 <Form.Group controlId='formBasicEmail'>
 
                     <Form.Label>Change Email:</Form.Label>
-                    <Form.Control required type='text' value={email} placeholder='Change email' onChange={e => updateEmail(e.target.value)} />
+                    <Form.Control required type='email' value={email} placeholder='user@email.com' onChange={e => updateEmail(e.target.value)} />
                     <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">
-                        Please choose an email.
+                        Please enter a valid email.
                     </Form.Control.Feedback>
 
                 </Form.Group>
@@ -99,7 +97,7 @@ export function UpdateProfile(props) {
                 <Form.Group controlId='formBasicBirthday'>
 
                     <Form.Label>Change Birthday:</Form.Label>
-                    <Form.Control required type='text' value={birthday} placeholder='DD-MM-YYYY' onChange={e => updateBirthday(e.target.value)} />
+                    <Form.Control required type='date' value={birthday} placeholder='DD-MM-YYYY' onChange={e => updateBirthday(e.target.value)} />
                     <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">
                         Please enter a valid birthday.
@@ -115,15 +113,14 @@ export function UpdateProfile(props) {
             </Link>
 
         </Container>
-
     )
 }
 
 UpdateProfile.propTypes = {
     user: PropTypes.shape({
-        username: PropTypes.string,
-        password: PropTypes.string,
-        email: PropTypes.string,
-        birthday: PropTypes.instanceOf(Date)
+        username: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        birthday: PropTypes.instanceOf(Date).isRequired
     })
 }

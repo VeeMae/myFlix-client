@@ -7,7 +7,6 @@ import { Row } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 
-
 import './director-view.scss';
 
 export class DirectorView extends React.Component {
@@ -20,7 +19,7 @@ export class DirectorView extends React.Component {
 
     render() {
 
-        const { director, movie } = this.props;
+        const { director } = this.props;
 
         return (
 

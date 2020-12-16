@@ -11,25 +11,27 @@ import Button from 'react-bootstrap/Button';
 import './movie-view.scss';
 
 export class MovieView extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {};
     }
 
     addFaveMovie(movie) {
-
         const token = localStorage.getItem('token');
         const userName = localStorage.getItem('user');
 
+        if (confirm('Add to list of Favorites?')) return (
         axios({
             method: 'put',
             url: `https://myflix-movie-application.herokuapp.com/users/${userName}/movies/${movie._id}`,
             headers: { Authorization: `Bearer ${token}` }
         })
-        .then(() => {
+                .then((response) => {
+                    console.log(response);
             alert('You have added this movie to your list of Favorites.');
-        });
+        })
+    )
   }
 
     render() {
@@ -95,10 +97,13 @@ MovieView.propTypes = {
         Description: PropTypes.string.isRequired,
         ImagePath: PropTypes.string.isRequired,
         Genre: PropTypes.shape({
-            Name: PropTypes.string.isRequired
+            Name: PropTypes.string.isRequired,
+            Description: PropTypes.string.isRequired
         }),
         Director: PropTypes.shape({
-            Name: PropTypes.string.isRequired
+            Name: PropTypes.string.isRequired,
+            Bio: PropTypes.string.isRequired,
+            Birth: PropTypes.string.isRequired
         })
     })
 };
