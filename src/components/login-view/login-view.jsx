@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import { Col, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -11,15 +14,35 @@ export function LoginView(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(username, password);
-        props.onLoggedIn(username);
-    };
+    const [validated, setValidated] = useState(false);
 
-     const registerClick = () => {
-         props.onRegister();
-     }
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        setValidated(true);
+
+        //Prevents a page refresh
+        event.preventDefault();
+            //Send a request to the server for authentication
+        axios.post('https://myflix-movie-application.herokuapp.com/login', {
+            username: username,
+            password: password
+        })
+            .then(response => {
+                const data = response.data;
+                props.onLoggedIn(data);
+            })
+            .catch(e => {
+                console.log(e, 'The user does not exist or incorrect credentials.');
+                alert('Please try again. Check that you have entered your credentials correctly.')
+            });
+};
+
 
     return (
 
@@ -29,20 +52,39 @@ export function LoginView(props) {
                     <h1>Welcome to MyFlix</h1>
                 </Col>
                 <Col sm={12} lg={6} className='form'>
-                    <Form.Group controlId='formBasicUsername'>
-                        <Form.Label>Username: </Form.Label>
-                        <Form.Control type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
-                    </Form.Group>
+                    <Form noValidate validated={validated}>
 
-                    <Form.Group controlId='formBasicPassword'>
-                        <Form.Label>Password: </Form.Label>
-                        <Form.Control type='text' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
-                    </Form.Group>
+                        <Form.Group controlId='formBasicUsername'>
 
-                    <Button variant='success' type='button' onClick={handleSubmit}>Login</Button>
+                            <Form.Label>Username: </Form.Label>
+                            <Form.Control required minLength='5' type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+                            <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Please type your username.
+                            </Form.Control.Feedback>
 
-                    <h3 className='register-text'>New to myFlix? Click here</h3>
-                    <Button variant='primary' type='button' onClick={registerClick}>Register</Button>
+                        </Form.Group>
+
+                        <Form.Group controlId='formBasicPassword'>
+
+                            <Form.Label>Password: </Form.Label>
+                            <Form.Control required minLength='5' type='password' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+                            <Form.Control.Feedback>&#10003;</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Please type your password.
+                            </Form.Control.Feedback>
+
+                        </Form.Group>
+
+                        <Button className='login-btn' variant='success' type='button' onClick={handleSubmit}>Login</Button>
+
+                        <h3 className='register-text'>New to myFlix? Click here</h3>
+                        <Link to='/register'>
+                            <Button className='register-btn' variant='primary' type='button'>Register</Button>
+                        </Link>
+
+                     </Form>
+
                 </Col>
             </Row>
         </Container>
@@ -53,5 +95,6 @@ LoginView.propTypes = {
     user: PropTypes.shape({
         username: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired
-    })
+    }),
+    onLoggedIn: PropTypes.func.isRequired
 };

@@ -1,4 +1,4 @@
-.card {
+.movieCard {
   max-width: 30%;
   margin: 4rem auto;
   padding: 1rem;
@@ -8,36 +8,33 @@
   font-family: "Alegreya Sans", sans-serif;
 }
 
-.card h1 {
+h1.card-title {
   font-size: 1.6rem;
   font-weight: 700;
+  color: #000;
 }
 
 div.card-body {
   font-size: 1.4rem;
 }
 
-button.card-button.btn.btn-link {
-  color: #000;
-  font-size: 1.1rem;
-  background-color: #edcdab;
-  border-radius: 8px;
-  margin-top: 2rem;
+.card-button {
+  margin: 1rem auto;
 }
 
-.container-header {
-  border-bottom: 1px solid #edcdab;
-  text-align: center;
+.btn {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
 }
 
 @media all and (max-width: 576px) {
-  .card {
+  .movieCard {
     max-width: 90%;
     margin: 1.5rem auto;
-    margin-left: 0;
     padding: 0;
   }
-  .card h1 {
+  h1.card-title {
     font-size: 1.5rem;
   }
   div.card-body {
@@ -45,7 +42,7 @@ button.card-button.btn.btn-link {
   }
 }
 @media all and (min-width: 577px) and (max-width: 1024px) {
-  .card {
+  .movieCard {
     max-width: 45%;
   }
   div.card-body {

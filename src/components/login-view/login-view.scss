@@ -1,6 +1,6 @@
 #login-form {
   text-align: left;
-  margin: 15rem 0rem;
+  margin: 5rem 0rem;
 }
 
 #login-form h1 {
@@ -15,14 +15,15 @@
   color: #edcdab;
 }
 
-input#formBasicPassword.form-control,
-input#formBasicUsername.form-control {
+.login-btn,
+.register-btn {
+  display: inline-block;
   width: 50%;
 }
 
-Button {
-  border-radius: 10px;
-  display: block;
+input#formBasicPassword.form-control,
+input#formBasicUsername.form-control {
+  width: 50%;
 }
 
 .form {
@@ -31,7 +32,7 @@ Button {
 
 @media all and (max-width: 992px) {
   #login-form {
-    margin: 10rem auto;
+    margin: 5rem auto;
   }
   #login-form h1 {
     padding-left: none;
@@ -53,5 +54,10 @@ Button {
   #login-form h3 {
     margin: 2rem auto;
     font-size: 1.4rem;
+  }
+  .login-btn,
+  .register-btn {
+    display: inline-block;
+    width: 40%;
   }
 } ;

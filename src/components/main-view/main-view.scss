@@ -2,11 +2,6 @@
   margin: 0 auto;
 }
 
-.container-header {
-  color: #edcdab;
-  margin: 2rem auto;
-}
-
 .navbar {
   margin: 1.5rem auto;
   padding: 0;
@@ -14,4 +9,8 @@
 
 .navbar-dark .navbar-nav a.nav-link {
   color: #edcdab;
+}
+
+a {
+  text-decoration: none;
 }
