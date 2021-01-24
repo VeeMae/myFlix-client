@@ -24,7 +24,7 @@ export class MovieView extends React.Component {
         if (confirm('Add to list of Favorites?')) return (
         axios({
             method: 'put',
-            url: `myflix-movies.netlify.app/users/${userName}/movies/${movie._id}`,
+            url: `https://myflix-movies.netlify.app/users/${userName}/movies/${movie._id}`,
             headers: { Authorization: `Bearer ${token}` }
         })
                 .then((response) => {

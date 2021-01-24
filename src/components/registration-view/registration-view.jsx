@@ -32,7 +32,7 @@ export function RegistrationView(props) {
 
         event.preventDefault();
 
-        axios.post('myflix-movies.netlify.app/users', {
+        axios.post('https://myflix-movies.netlify.app/users', {
             username: username,
             password: password,
             email: email,
