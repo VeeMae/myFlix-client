@@ -31,7 +31,7 @@ export function UpdateProfile(props) {
         const token = localStorage.getItem('token');
         const userName = localStorage.getItem('user');
 
-        axios.put(`https://myflix-movies.netlify.app/${userName}`, {
+        axios.put(`https://myflix-movie-application.herokuapp.com/users/${userName}`, {
             username: username,
             password: password,
             email: email,

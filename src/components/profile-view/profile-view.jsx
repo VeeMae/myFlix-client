@@ -32,7 +32,7 @@ export class ProfileView extends React.Component {
 
     getUser(token) {
         const userName = localStorage.getItem('user')
-        axios.get(`https://myflix-movies.netlify.app/${userName}`, {
+        axios.get(`https://myflix-movie-application.herokuapp.com/users/${userName}`, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(response => {
@@ -61,7 +61,7 @@ export class ProfileView extends React.Component {
 
         if (confirm('Please confirm that you want to delete your profile.')) {
             return (
-            axios.delete(`https://myflix-movies.netlify.app/users/${userName}`, {
+            axios.delete(`https://myflix-movie-application.herokuapp.com/users/${userName}`, {
                 headers: { Authorization: `Bearer ${token}` }
             })
                 .then((response) => {
@@ -77,7 +77,7 @@ export class ProfileView extends React.Component {
         const token = localStorage.getItem('token');
         const userName = localStorage.getItem('user');
 
-        axios.delete(`https://myflix-movies.netlify.app/users/${userName}/movies/delete/${movie._id}`, {
+        axios.delete(`https://myflix-movie-application.herokuapp.com/users/${userName}/movies/delete/${movie._id}`, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then((response) => {
