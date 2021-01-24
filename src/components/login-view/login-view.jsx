@@ -29,7 +29,7 @@ export function LoginView(props) {
         //Prevents a page refresh
         event.preventDefault();
             //Send a request to the server for authentication
-        axios.post('https://myflix-movies.netlify.app', {
+        axios.post('https://myflix-movies.netlify.app/login', {
             username: username,
             password: password
         })
