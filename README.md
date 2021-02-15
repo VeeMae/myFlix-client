@@ -4,10 +4,15 @@
 
 Build the client-side for the myFlix application (based on its existing server-side code- REST API and database) using React.
 
+### Login Page
+![Login page](/login-pg.png)
+### Registration Page
+![Registration page](/registration-pg.png)
+
 ## How To Use
 
-- Refer to this codebase to see how the client-side was created using React, React Redux, and bootstrap.
-- The actual application is in this github: https://github.com/VeeMae/myFlix 
+- Refer to this codebase to see how the client-side was created using React, React Redux, and Bootstrap
+- The full stack application is in this github: https://github.com/VeeMae/myFlix 
 - The application is hosted here: https://myflix-movie-application.herokuapp.com/
 - For full documentation on the API being used on the server-side, visit https://myflix-movie-application.herokuapp.com/documentation.html
 
