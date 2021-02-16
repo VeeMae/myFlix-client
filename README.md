@@ -1,8 +1,8 @@
-# myFlix-client
+# myFlix (Client-Side)
 
 ## Objective 
 
-Build the client-side for the myFlix application (based on its existing server-side code- REST API and database) using React.
+Build the client-side for the myFlix application (based on its existing server-side code - REST API and database) using React.
 
 ### Login Page
 ![Login page](/login-pg.png)
@@ -31,7 +31,7 @@ Build the client-side for the myFlix application (based on its existing server-s
 
 ## User Stories
 
-- As a user, I want to be able to access information on movies, directors, and genres so that i can learn more about movies I've watched or am interested in.
+- As a user, I want to be able to access information on movies, directors, and genres so that I can learn more about movies I've watched or am interested in.
 - As a user, I want to be able to create a profile so I can save data about my favorite movies.
 
 
